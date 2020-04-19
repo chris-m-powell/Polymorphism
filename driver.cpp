@@ -1,42 +1,26 @@
-#include <iostream>
-using namespace std;
+#include "derived1.h"
+#include "derived2.h"
+//-------------------------------------------------
+/* template <class T> */
+/* void clienta(Base<T> const& x) { cout << x.derived() << endl; } */
 
 template <class T>
-class base {
-  public:
-    string method() const { return static_cast<T const&>(*this).method(); };
-
-    // this shows how it could be useful
-    /* T& Self() { return static_cast<T&>(*this); } */
-    /* void interface() { // common interface */
-      // ....
-      /* cout << Self().method() << endl; // specialized implementation */ 
-      // ...
-    /* } */
-};
-
-class derived1: public base<derived1> {
-  public:
-    string method() const { return "derived1"; }
-};
-
-class derived2: public base<derived2> {
-  public:
-    string method() const { return "derived2"; }
-};
-
-template <class T>
-void client(base<T> const& x) { cout << x.method() << endl; }
-
+void client(Base<T>* x) { 
+  cout << (*x).derived.method_a(); 
+  (*x).derived.method_b(); 
+}
+//-------------------------------------------------
 int main() {
-  // polymorphism occurs with the base class parameter to client();
-  // that is, client() can accept instantiations of either derived class.
-  derived1 d1;
-  derived2 d2;
-  client(d1);
-  client(d2);
- 
-  /* d1.interface(); */
-  /* d2.interface(); */
+  /*
+    polymorphism occurs with the base class parameter to client();
+    that is, client() can accept instantiations of either derived class.
+  */
+  Derived1 D1;
+  client(&D1);
+  
+  Derived2 D2;
+  client(&D2);
+
   return 0;
 }
+//-------------------------------------------------
