@@ -1,9 +1,12 @@
 #include "derived1.h"
 #include "derived2.h"
 //-------------------------------------------------
-/* template <class T> */
-/* void clienta(Base<T> const& x) { cout << x.derived() << endl; } */
-
+  /*
+    This program exhibits polymorphic behavior as client() accepts a pointer to 
+    an object of the base class that is type-compatible with pointers to either 
+    derived class. When invoked, the respective implementations of method_a() 
+    and method_b() will be resolved based on the derived-type pointer passed.
+  */
 template <class T>
 void client(Base<T>* x) { 
   cout << (*x).derived.method_a(); 
@@ -11,10 +14,6 @@ void client(Base<T>* x) {
 }
 //-------------------------------------------------
 int main() {
-  /*
-    polymorphism occurs with the base class parameter to client();
-    that is, client() can accept instantiations of either derived class.
-  */
   Derived1 D1;
   client(&D1);
   
