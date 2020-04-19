@@ -9,7 +9,7 @@
   */
 template <class T>
 void client(Base<T>* x) { 
-  cout << (*x).derived.method_a(); 
+  (*x).derived.method_a(); 
   (*x).derived.method_b(); 
 }
 //-------------------------------------------------

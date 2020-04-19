@@ -6,8 +6,8 @@ class Derived2: public Base<Derived2> {
   private:
   protected:
   public:
-    int method_a() const { return 2; }
-    void method_b() const { cout << 2 << endl; }
+    void method_a() const { cout << "2A" << endl; }
+    void method_b() const { cout << "2B" << endl; }
 };
 //-------------------------------------------------
 #endif
