@@ -1,5 +1,4 @@
-#include "derived1.h"
-#include "derived2.h"
+#include "base.h"
 //-------------------------------------------------
   /*
     This program exhibits polymorphic behavior as client() accepts a pointer to 
@@ -11,8 +10,7 @@
   */
 template <class T>
 void client(Base<T>* x) { 
-  (*x).derived.method_a(); 
-  (*x).derived.method_b(); 
+  (*x).method(); 
 }
 //-------------------------------------------------
 int main() {

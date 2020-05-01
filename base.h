@@ -6,9 +6,20 @@ using namespace std;
 template <class T>
 class Base {
   protected:
-  public:
-    // derived yields a reference to derived type,
+    // reference to derived type,
     T& derived = static_cast<T&>(*this);
+  public:
+    void method() const { return derived.method(); }
+};
+//-------------------------------------------------
+class Derived1: public Base<Derived1> {
+  public:
+    void method() const { cout << "1" << endl; }
+};
+//-------------------------------------------------
+class Derived2: public Base<Derived2> {
+  public:
+    void method() const { cout << "2" << endl; }
 };
 //-------------------------------------------------
 #endif
