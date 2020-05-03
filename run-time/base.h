@@ -3,23 +3,22 @@
 #include <iostream>
 using namespace std;
 //-------------------------------------------------
-template <class T>
 class Base {
   protected:
-    // reference to derived type,
-    T& derived = static_cast<T&>(*this);
   public:
-    void method() const { return derived.method(); }
+    virtual void method() const = 0; 
 };
 //-------------------------------------------------
-class Derived1: public Base<Derived1> {
+class Derived1: public Base {
   public:
-    void method() const { cout << "1" << endl; }
+    Derived1() {}
+    virtual void method() const { cout << "1" << endl; }
 };
 //-------------------------------------------------
-class Derived2: public Base<Derived2> {
+class Derived2: public Base {
   public:
-    void method() const { cout << "2" << endl; }
+    Derived2() {}
+    virtual void method() const { cout << "2" << endl; }
 };
 //-------------------------------------------------
 #endif
